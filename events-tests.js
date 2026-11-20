@@ -45,8 +45,8 @@
     const div = document.createElement('div');
     div.className = `test-result ${passed ? 'test-success' : 'test-failure'}`;
     div.textContent = passed
-      ? `✅ PASS: ${name}`
-      : `❌ FAIL: ${name} — ${error.message}`;
+      ? `[PASS] ${name}`
+      : `[FAIL] ${name} — ${error.message}`;
     container.appendChild(div);
   }
 
@@ -323,16 +323,16 @@
 
     // --- Запуск всех тестов ---
     let passedCount = 0;
-    console.group('🧪 Запуск автотестов Практической работы №12');
+    console.group('Автотесты Практической работы №12');
 
     for (const t of tests) {
       try {
         await t.fn();
         passedCount += 1;
-        console.log(`%c✅ PASS: ${t.name}`, 'color: #27ae60; font-weight: bold;');
+        console.log(`%c[PASS] ${t.name}`, 'color: #34b37e; font-weight: bold;');
         renderResult(ui.list, t.name, true);
       } catch (err) {
-        console.error(`❌ FAIL: ${t.name}`, err);
+        console.error(`[FAIL] ${t.name}`, err);
         renderResult(ui.list, t.name, false, err);
       }
     }
